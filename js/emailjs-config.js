@@ -30,6 +30,6 @@ const EMAILJS_CONFIG = {
   RESTAURANT_EMAIL: "[email protected]"
 };
 
-if (window.emailjs && EMAILJS_CONFIG.PUBLIC_KEY !== "SUBSTITUIR_PUBLIC_KEY") {
+if (window.emailjs && EMAILJS_CONFIG.PUBLIC_KEY !== "uxh7-5AwqD506BMFr") {
   emailjs.init({ publicKey: EMAILJS_CONFIG.PUBLIC_KEY });
 }
