@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — Pizzaria Bella Domus</title>
+<meta name="description" content="Menu da Pizzaria Bella Domus em Vila Franca de Xira: pizzas, massas, especialidades e sobremesas.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .menu-nav{ position:sticky; top:65px; z-index:20; background:var(--color-bg); border-bottom:1px solid var(--color-line); }
+  .menu-nav-inner{ display:flex; gap:0.5rem; overflow-x:auto; padding:0.9rem clamp(1.25rem,4vw,3rem); max-width:1140px; margin:0 auto; align-items:center; }
+  .menu-nav a{ white-space:nowrap; text-decoration:none; font-size:0.82rem; font-weight:500; color:var(--color-ink-soft); padding:0.3em 0.1em; }
+  .menu-nav a:hover{ color:var(--color-primary); }
+  .lang-switch{ margin-left:auto; display:flex; gap:0.3rem; flex-shrink:0; }
+  .lang-btn{ font-size:0.78rem; font-weight:600; padding:0.35em 0.8em; border:1px solid var(--color-line); background:transparent; cursor:pointer; color:var(--color-ink-soft); border-radius:3px; }
+  .lang-btn.active{ background:var(--color-ink); color:var(--color-bg); border-color:var(--color-ink); }
+
+  .menu-list{ list-style:none; margin:0; padding:0; }
+  .menu-item{ display:flex; justify-content:space-between; align-items:baseline; gap:1.2rem; padding:1rem 0; border-bottom:1px solid var(--color-line); }
+  .menu-item .name{ font-family:var(--font-display); font-size:1.1rem; font-weight:500; }
+  .menu-item .desc{ display:block; font-size:0.88rem; color:var(--color-ink-soft); margin-top:0.2rem; font-family:var(--font-body); }
+  .menu-item .price{ font-family:var(--font-display); color:var(--color-primary); font-weight:500; white-space:nowrap; font-size:1.02rem; }
+  .topping-note{ font-size:0.9rem; color:var(--color-ink-soft); margin:0.9rem 0 0.3rem; }
+  .topping-note b{ color:var(--color-ink); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <img src="img/logo-bella-domus.png" alt="Bella Domus Pizzaria" style="height:46px; width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="sobre.html">A Nossa História</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="reservas.html" class="btn btn-primary"><span class="long">Reservar </span>Mesa</a>
+    </div>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="section" style="padding-bottom:1.5rem;">
+    <div class="container text-center" style="max-width:640px; margin:0 auto;">
+      <span class="eyebrow" style="justify-content:center;">Menu</span>
+      <h1 style="font-size:var(--step-h2);">A verdadeira pizza italiana</h1>
+    </div>
+    <div class="container" style="max-width:460px; margin-top:2rem;">
+      <img src="img/menu-cartaz.jpg" alt="Cartaz do menu Bella Domus Pizzaria" style="width:100%; border:1px solid var(--color-line);">
+      <p class="hint text-center" style="margin-top:0.8rem;">O nosso cartaz — o menu completo, em detalhe, está logo abaixo.</p>
+    </div>
+  </section>
+
+  <nav class="menu-nav" aria-label="Categorias do menu">
+    <div class="menu-nav-inner">
+      <a href="#entradas" data-pt="Entradas" data-en="Starters">Entradas</a>
+      <a href="#pizzas" data-pt="Pizzas" data-en="Pizzas">Pizzas</a>
+      <a href="#massas" data-pt="Massas &amp; Salada" data-en="Pasta &amp; Salad">Massas &amp; Salada</a>
+      <a href="#especialidades" data-pt="Especialidades" data-en="Specialties">Especialidades</a>
+      <a href="#dolci" data-pt="Sobremesas" data-en="Desserts">Sobremesas</a>
+      <a href="#bebidas" data-pt="Bebidas" data-en="Drinks">Bebidas</a>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang-btn="pt">PT</button>
+        <button class="lang-btn" data-lang-btn="en">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ENTRADAS / STARTERS -->
+  <section class="section" id="entradas">
+    <div class="container" style="max-width:760px;">
+      <span class="eyebrow" data-pt="Entradas" data-en="Starters">Entradas</span>
+      <h2 style="margin-bottom:1.3rem;" data-pt="Para começar" data-en="To start">Para começar</h2>
+      <ul class="menu-list">
+        <li class="menu-item"><div><span class="name" data-pt="Pão de Alho Familiar" data-en="Family Garlic Bread">Pão de Alho Familiar</span></div><span class="price">€8,00</span></li>
+        <li class="menu-item"><div><span class="name" data-pt="Salada Caprese" data-en="Caprese Salad">Salada Caprese</span></div><span class="price">€12,00</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PIZZAS -->
+  <section class="section section-alt" id="pizzas">
+    <div class="container" style="max-width:760px;">
+      <span class="eyebrow">Pizzas</span>
+      <h2 style="margin-bottom:0.3rem;" data-pt="Pizza média" data-en="Medium pizza">Pizza média</h2>
+      <ul class="menu-list">
+        <li class="menu-item">
+          <div>
+            <span class="name" data-pt='Pizza Base "Margherita"' data-en="Margherita Base Pizza">Pizza Base "Margherita"</span>
+            <span class="desc" data-pt="Molho de tomate e queijo mozzarella." data-en="Tomato sauce and mozzarella cheese.">Molho de tomate e queijo mozzarella.</span>
+          </div>
+          <span class="price">€10,50</span>
+        </li>
+        <li class="menu-item">
+          <div>
+            <span class="name" data-pt="Pizza Base + 2 Ingredientes" data-en="Base Pizza + 2 Toppings">Pizza Base + 2 Ingredientes</span>
+            <span class="desc" data-pt="Molho de tomate, queijo mozzarella e 2 ingredientes à escolha." data-en="Tomato sauce, mozzarella cheese and 2 toppings of your choice.">Molho de tomate, queijo mozzarella e 2 ingredientes à escolha.</span>
+          </div>
+          <span class="price">€14,50</span>
+        </li>
+      </ul>
+
+      <p class="topping-note"><b data-pt="Ingredientes — +€3,00 cada:" data-en="Toppings — +€3.00 each:">Ingredientes — +€3,00 cada:</b>
+        <span data-pt="Fiambre, Presunto, Mortadela, Salame Picante, Bolonhesa, Atum, Anchovas, Camarão, Farinheira, Chouriço, Frango, Salsicha Toscana, Ovo."
+              data-en="Ham, Prosciutto, Mortadella, Spicy Salami, Bolognese Beef, Tuna, Anchovies, Shrimp, Farinheira, Chorizo, Chicken, Tuscan Sausage, Egg.">
+          Fiambre, Presunto, Mortadela, Salame Picante, Bolonhesa, Atum, Anchovas, Camarão, Farinheira, Chouriço, Frango, Salsicha Toscana, Ovo.
+        </span>
+      </p>
+      <p class="topping-note"><b data-pt="Ingredientes — +€2,00 cada:" data-en="Toppings — +€2.00 each:">Ingredientes — +€2,00 cada:</b>
+        <span data-pt="Rúcula, Espinafres, Ananás, Tomate Cherry, Alcaparras, Azeitona sem caroço, Morango, Cogumelos."
+              data-en="Rocket (arugula), Spinach, Pineapple, Cherry Tomatoes, Capers, Pitted Olives, Strawberries, Mushrooms.">
+          Rúcula, Espinafres, Ananás, Tomate Cherry, Alcaparras, Azeitona sem caroço, Morango, Cogumelos.
+        </span>
+      </p>
+      <p class="hint" style="margin-top:0.6rem; font-style:italic;" data-pt="Pode acrescentar ingredientes!" data-en="You can add extra toppings!">Pode acrescentar ingredientes!</p>
+
+      <hr class="hairline">
+
+      <ul class="menu-list">
+        <li class="menu-item">
+          <div>
+            <span class="name">Calzone</span>
+            <span class="desc" data-pt="Molho de tomate e queijo mozzarella. Pode acrescentar ingredientes!" data-en="Tomato sauce and mozzarella cheese. You can add extra toppings!">Molho de tomate e queijo mozzarella. Pode acrescentar ingredientes!</span>
+          </div>
+          <span class="price">€10,50</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MASSAS & SALADA -->
+  <section class="section" id="massas">
+    <div class="container" style="max-width:760px;">
+      <span class="eyebrow" data-pt="Massas &amp; Salada" data-en="Pasta &amp; Salad">Massas &amp; Salada</span>
+      <h2 style="margin-bottom:1.3rem;" data-pt="Mais do nosso menu" data-en="More from our menu">Mais do nosso menu</h2>
+      <ul class="menu-list">
+        <li class="menu-item"><div><span class="name" data-pt="Massa Bolonhesa" data-en="Bolognese Pasta">Massa Bolonhesa</span></div><span class="price">€15,00</span></li>
+        <li class="menu-item"><div><span class="name" data-pt="Salada" data-en="Salad">Salada</span><span class="desc" data-pt="Com abacate, queijo mozzarella, ovo e azeitonas." data-en="With avocado, mozzarella cheese, egg and olives.">Com abacate, queijo mozzarella, ovo e azeitonas.</span></div><span class="price">€13,00</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES -->
+  <section class="section section-alt" id="especialidades">
+    <div class="container grid-2">
+      <div class="reveal">
+        <span class="eyebrow" data-pt="Especialidades" data-en="Specialties">Especialidades</span>
+        <h2 style="margin-bottom:1.3rem;" data-pt="Feita no forno" data-en="Baked in the oven">Feita no forno</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><div><span class="name" data-pt="Lasanha de Carne" data-en="Meat Lasagna">Lasanha de Carne</span></div><span class="price">€15,00</span></li>
+        </ul>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s;">
+        <img src="img/especialidades-forno.jpg" alt="Lasanha de carne gratinada, pronta a servir" style="width:100%; aspect-ratio:4/3; object-fit:cover; border:1px solid var(--color-line);">
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBREMESAS -->
+  <section class="section" id="dolci">
+    <div class="container" style="max-width:760px;">
+      <span class="eyebrow" data-pt="Sobremesas" data-en="Desserts">Sobremesas</span>
+      <h2 style="margin-bottom:1.3rem;" data-pt="Para terminar" data-en="To finish">Para terminar</h2>
+      <ul class="menu-list">
+        <li class="menu-item"><div><span class="name" data-pt="Fatia de Bolo Caseiro" data-en="Slice of Homemade Cake">Fatia de Bolo Caseiro</span></div><span class="price">€3,50</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BEBIDAS -->
+  <section class="section section-alt" id="bebidas">
+    <div class="container" style="max-width:760px;">
+      <span class="eyebrow" data-pt="Bebidas" data-en="Drinks">Bebidas</span>
+      <h2 style="margin-bottom:1.3rem;" data-pt="Para acompanhar" data-en="To go with it">Para acompanhar</h2>
+      <ul class="menu-list">
+        <li class="menu-item"><div><span class="name" data-pt="Copo de Vinho" data-en="Glass of Wine">Copo de Vinho</span></div><span class="price">€2,00</span></li>
+        <li class="menu-item"><div><span class="name" data-pt="Água" data-en="Water">Água</span></div><span class="price">€1,00</span></li>
+        <li class="menu-item"><div><span class="name" data-pt="Refrigerante (Lata)" data-en="Soft Drink (Can)">Refrigerante (Lata)</span></div><span class="price">€2,00</span></li>
+        <li class="menu-item"><div><span class="name">Imperial Sagres</span></div><span class="price">€1,00</span></li>
+        <li class="menu-item"><div><span class="name" data-pt="Caneca de Cerveja Sagres" data-en="Sagres Beer Mug">Caneca de Cerveja Sagres</span></div><span class="price">€3,00</span></li>
+        <li class="menu-item"><div><span class="name">Bandida do Pomar (20cl)</span></div><span class="price">€2,00</span></li>
+        <li class="menu-item"><div><span class="name">Tinto de Verão</span></div><span class="price">€2,00</span></li>
+        <li class="menu-item"><div><span class="name" data-pt="Sumo de Laranja Natural" data-en="Fresh Orange Juice">Sumo de Laranja Natural</span></div><span class="price">€3,50</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container text-center" style="max-width:600px;">
+      <h2 style="font-size:var(--step-h2);" data-pt="Gostou do que viu?" data-en="Like what you see?">Gostou do que viu?</h2>
+      <p data-pt="Reserve a sua mesa e venha provar." data-en="Reserve your table and come taste it.">Reserve a sua mesa e venha provar.</p>
+      <a href="reservas.html" class="btn btn-ghost-light" data-pt="Reservar mesa" data-en="Reserve a table">Reservar mesa</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:1rem; color: var(--color-bg);">
+        <img src="img/logo-bella-domus.png" alt="Bella Domus Pizzaria" style="height:34px; width:auto;">
+      </div>
+      <p style="max-width:300px;">A verdadeira pizza italiana, em Vila Franca de Xira.</p>
+    </div>
+    <div>
+      <h4>Explorar</h4>
+      <ul class="footer-links">
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="sobre.html">A Nossa História</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Visite-nos</h4>
+      <ul class="footer-links">
+        <li>Avenida Pedro Vítor, 114, 2600-221 Vila Franca de Xira</li>
+        <li>+351 913 675 717</li>
+        <li>saboresplaza@gmail.com</li>
+        <li>Seg–Sáb, 12h–23h · Domingo encerrado</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Pizzaria Bella Domus. Todos os direitos reservados.</span>
+    <span><a href="admin-login.html" style="color:#cfc9bf;">Acesso à equipa</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.langBtn;
+    document.querySelectorAll('[data-lang-btn]').forEach(b => b.classList.toggle('active', b === btn));
+    document.querySelectorAll('[data-pt]').forEach(el => {
+      el.textContent = lang === 'en' ? el.dataset.en : el.dataset.pt;
+    });
+    document.documentElement.lang = lang === 'en' ? 'en' : 'pt-PT';
+  });
+});
+</script>
+</body>
+</html>

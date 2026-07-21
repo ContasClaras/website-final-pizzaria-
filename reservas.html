@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservas — Pizzaria Bella Domus</title>
+<meta name="description" content="Reserve a sua mesa no Bella Domus. Confirmação por email assim que a equipa aceitar o pedido.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <img src="img/logo-bella-domus.png" alt="Bella Domus Pizzaria" style="height:46px; width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="sobre.html">A Nossa História</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="reservas.html" class="btn btn-primary active"><span class="long">Reservar </span>Mesa</a>
+    </div>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container grid-2">
+      <div class="reveal">
+        <span class="eyebrow">Reservas</span>
+        <h1 style="font-size:var(--step-h2);">Reserve a sua mesa</h1>
+        <p style="color:var(--color-ink-soft);">
+          Preencha o formulário e enviamos o seu pedido diretamente para a nossa equipa.
+          Assim que for aceite, recebe automaticamente um email de confirmação.
+        </p>
+        <ul style="list-style:none; padding:0; margin:1.5rem 0; display:flex; flex-direction:column; gap:0.9rem; color:var(--color-ink-soft); font-size:0.95rem;">
+          <li>✓ Resposta normalmente em poucas horas</li>
+          <li>✓ Confirmação automática por email</li>
+          <li>✓ Grupos grandes? Deixe-nos uma nota no formulário</li>
+        </ul>
+        <p class="hint">Para eventos com mais de 12 pessoas, recomendamos que nos ligue diretamente: +351 913 675 717</p>
+        <p class="hint">Também fazemos takeaway — e entregamos grátis em toda a zona de Vila Franca de Xira.</p>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.1s;">
+        <form id="reserva-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="r-nome">Nome</label>
+              <input type="text" id="r-nome" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="r-pessoas">Nº de pessoas</label>
+              <input type="number" id="r-pessoas" min="1" max="28" value="2" required>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="r-email">Email</label>
+              <input type="email" id="r-email" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="r-telefone">Telefone</label>
+              <input type="tel" id="r-telefone" required autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="r-data">Data</label>
+              <input type="date" id="r-data" required>
+            </div>
+            <div class="field">
+              <label for="r-hora">Hora</label>
+              <select id="r-hora" required>
+                <option value="">Escolher…</option>
+                <option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option>
+                <option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="r-notas">Pedidos especiais (opcional)</label>
+            <textarea id="r-notas" placeholder="Alergias, ocasião especial, cadeira de bebé, etc."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="reserva-submit">Pedir reserva</button>
+          <p class="hint text-center" style="margin-top:0.8rem;">Este é um pedido — a reserva só fica confirmada depois de aceite pela equipa, por email.</p>
+          <div class="form-msg" id="reserva-msg"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:1rem; color: var(--color-bg);">
+        <img src="img/logo-bella-domus.png" alt="Bella Domus Pizzaria" style="height:34px; width:auto;">
+      </div>
+      <p style="max-width:300px;">A verdadeira pizza italiana, em Vila Franca de Xira.</p>
+    </div>
+    <div>
+      <h4>Explorar</h4>
+      <ul class="footer-links">
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="sobre.html">A Nossa História</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Visite-nos</h4>
+      <ul class="footer-links">
+        <li>Avenida Pedro Vítor, 114, 2600-221 Vila Franca de Xira</li>
+        <li>+351 913 675 717</li>
+        <li>saboresplaza@gmail.com</li>
+        <li>Seg–Sáb, 12h–23h · Domingo encerrado</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Pizzaria Bella Domus. Todos os direitos reservados.</span>
+    <span><a href="admin-login.html" style="color:#cfc2ae;">Acesso à equipa</a></span>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/emailjs-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/reservas.js"></script>
+</body>
+</html>

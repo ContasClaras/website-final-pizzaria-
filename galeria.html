@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria — Pizzaria Bella Domus</title>
+<meta name="description" content="Fotos das pizzas, do espaço e do forno da Pizzaria Bella Domus.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .gallery-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+  .gallery-grid .ph{ background:var(--color-bg-alt); border:1px solid var(--color-line); display:flex; align-items:center; justify-content:center; text-align:center; padding:1rem; font-size:0.78rem; color:var(--color-ink-soft); }
+  .gallery-grid .span-2{ grid-column:span 2; }
+  @media (max-width:720px){ .gallery-grid{ grid-template-columns:repeat(2,1fr); } .gallery-grid .span-2{ grid-column:span 2; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <img src="img/logo-bella-domus.png" alt="Bella Domus Pizzaria" style="height:46px; width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="sobre.html">A Nossa História</a></li>
+      <li><a href="galeria.html" class="active">Galeria</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="reservas.html" class="btn btn-primary"><span class="long">Reservar </span>Mesa</a>
+    </div>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="section" style="padding-bottom:1.5rem;">
+    <div class="container text-center" style="max-width:640px; margin:0 auto;">
+      <span class="eyebrow" style="justify-content:center;">Galeria</span>
+      <h1 style="font-size:var(--step-h2);">Um pouco da nossa casa</h1>
+      <p style="color:var(--color-ink-soft);">Pizzas acabadas de sair do forno, o nosso espaço e a cozinha em ação.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="gallery-grid">
+        <div class="reveal span-2" style="aspect-ratio:16/10;"><img src="img/pizza-destaque.jpg" alt="Pizza Bella Domus acabada de sair do forno" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="reveal" style="aspect-ratio:1/1;"><img src="img/forno-italforni.jpg" alt="Forno Italforni da pizzaria" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="reveal" style="aspect-ratio:1/1;"><img src="img/interior-balcao-1.jpg" alt="Balcão da Pizzaria Bella Domus" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="reveal" style="aspect-ratio:1/1;"><img src="img/especialidades-forno.jpg" alt="Lasanha de carne gratinada" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="reveal span-2" style="aspect-ratio:16/10;"><img src="img/interior-balcao-2.jpg" alt="Interior da pizzaria" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="reveal" style="aspect-ratio:1/1;"><img src="img/pizza-presunto-rucula.jpg" alt="Pizza com presunto, rúcula e parmesão" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="reveal span-2" style="aspect-ratio:16/10;"><img src="img/entrada-loja.jpg" alt="Entrada da Pizzaria Bella Domus" style="width:100%; height:100%; object-fit:cover;"></div>
+      </div>
+      <p class="hint text-center" style="margin-top:2rem;">
+        Mais fotos brevemente.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container text-center" style="max-width:600px;">
+      <h2 style="font-size:var(--step-h2);">Gostou do que viu?</h2>
+      <p>Reserve a sua mesa e venha viver a experiência.</p>
+      <a href="reservas.html" class="btn btn-ghost-light">Reservar mesa</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:1rem; color: var(--color-bg);">
+        <img src="img/logo-bella-domus.png" alt="Bella Domus Pizzaria" style="height:34px; width:auto;">
+      </div>
+      <p style="max-width:300px;">A verdadeira pizza italiana, em Vila Franca de Xira.</p>
+    </div>
+    <div>
+      <h4>Explorar</h4>
+      <ul class="footer-links">
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="sobre.html">A Nossa História</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Visite-nos</h4>
+      <ul class="footer-links">
+        <li>Avenida Pedro Vítor, 114, 2600-221 Vila Franca de Xira</li>
+        <li>+351 913 675 717</li>
+        <li>saboresplaza@gmail.com</li>
+        <li>Seg–Sáb, 12h–23h · Domingo encerrado</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Pizzaria Bella Domus. Todos os direitos reservados.</span>
+    <span><a href="admin-login.html" style="color:#cfc2ae;">Acesso à equipa</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

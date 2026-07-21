@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Gestão — Pizzaria Bella Domus</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .admin-shell{ padding-top:2rem; padding-bottom:5rem; }
+  .admin-top{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; }
+  .admin-stats{ display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2rem; }
+  .stat-box{ background:var(--color-paper); border:1px solid var(--color-line); padding:1rem 1.4rem; min-width:150px; }
+  .stat-box b{ font-family:var(--font-display); font-size:1.6rem; display:block; color:var(--color-primary); }
+  .stat-box span{ font-size:0.78rem; color:var(--color-ink-soft); text-transform:uppercase; letter-spacing:0.04em; }
+
+  .tabs{ display:flex; gap:0.5rem; border-bottom:1px solid var(--color-line); margin-bottom:2rem; }
+  .tab-btn{ background:none; border:none; cursor:pointer; padding:0.8em 1.3em; font-family:var(--font-body); font-weight:600; color:var(--color-ink-soft); border-bottom:2px solid transparent; margin-bottom:-1px; }
+  .tab-btn.active{ color:var(--color-primary); border-color:var(--color-primary); }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
+
+  .filters{ display:flex; gap:1rem; flex-wrap:wrap; align-items:end; margin-bottom:1.6rem; }
+  .filters .field{ margin:0; min-width:170px; }
+
+  .res-card{ background:var(--color-paper); border:1px solid var(--color-line); padding:1.4rem 1.6rem; margin-bottom:1.1rem; }
+  .res-card-top{ display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:flex-start; }
+  .res-card h3{ font-size:1.2rem; margin:0 0 0.2rem; }
+  .res-meta{ font-size:0.88rem; color:var(--color-ink-soft); display:flex; flex-wrap:wrap; gap:0.3rem 1rem; margin:0.4rem 0; }
+  .res-notes{ font-size:0.88rem; background:var(--color-bg-alt); padding:0.6rem 0.8rem; border-left:2px solid var(--color-gold); margin-top:0.6rem; }
+  .table-picker{ display:flex; flex-wrap:wrap; gap:0.5rem; margin:0.9rem 0; }
+  .table-chip{ border:1px solid var(--color-line); border-radius:100px; padding:0.35em 0.9em; font-size:0.82rem; cursor:pointer; user-select:none; }
+  .table-chip input{ display:none; }
+  .table-chip.checked{ background:var(--color-olive); color:var(--color-bg); border-color:var(--color-olive); }
+  .capacity-note{ font-size:0.82rem; margin-top:0.3rem; }
+  .capacity-note.ok{ color:var(--color-olive-dark); }
+  .capacity-note.warn{ color:var(--color-primary-dark); }
+  .conflict-box{ background:var(--color-primary-tint); color:var(--color-primary-dark); border:1px solid var(--color-primary); padding:0.7rem 0.9rem; font-size:0.85rem; margin-top:0.7rem; }
+  .res-actions{ display:flex; gap:0.7rem; margin-top:1rem; flex-wrap:wrap; }
+
+  .table-row{ display:flex; align-items:center; gap:1rem; padding:0.9rem 0; border-bottom:1px dotted var(--color-line); }
+  .table-row input[type="text"], .table-row input[type="number"]{ padding:0.5em 0.6em; }
+  .table-row .grow{ flex:1; }
+  .empty-state{ text-align:center; padding:3rem 1rem; color:var(--color-ink-soft); border:1px dashed var(--color-line); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <img src="img/logo-bella-domus.png" alt="Bella Domus Pizzaria" style="height:46px; width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><span class="hint" id="admin-user-email">—</span></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="btn btn-outline" id="logout-btn">Sair</button>
+    </div>
+  </nav>
+</header>
+
+<main class="container admin-shell">
+
+  <div class="admin-top">
+    <div>
+      <span class="eyebrow">Painel de gestão</span>
+      <h1 style="font-size:var(--step-h3); margin-top:0.3rem;">Reservas &amp; mesas</h1>
+    </div>
+  </div>
+
+  <div class="admin-stats">
+    <div class="stat-box"><b id="stat-pending">–</b><span>Pedidos pendentes</span></div>
+    <div class="stat-box"><b id="stat-confirmed-today">–</b><span>Confirmadas hoje</span></div>
+    <div class="stat-box"><b id="stat-total-seats">–</b><span>Lugares configurados</span></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="pedidos">Pedidos de Reserva</button>
+    <button class="tab-btn" data-tab="mesas">Mesas (lugares)</button>
+  </div>
+
+  <!-- PEDIDOS -->
+  <section class="tab-panel active" id="tab-pedidos">
+    <div class="filters">
+      <div class="field">
+        <label for="filter-date">Data</label>
+        <input type="date" id="filter-date">
+      </div>
+      <div class="field">
+        <label for="filter-status">Estado</label>
+        <select id="filter-status">
+          <option value="pending">Pendentes</option>
+          <option value="confirmed">Confirmadas</option>
+          <option value="declined">Recusadas</option>
+          <option value="all">Todos</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button class="btn btn-outline" id="clear-date">Ver todas as datas</button>
+      </div>
+    </div>
+
+    <div id="res-list"></div>
+  </section>
+
+  <!-- MESAS -->
+  <section class="tab-panel" id="tab-mesas">
+    <p style="color:var(--color-ink-soft); max-width:60ch;">
+      Configure aqui as vossas mesas reais (nome, lugares, zona da sala). Isto é usado para atribuir
+      mesas quando aceitam uma reserva. O total abaixo deve corresponder aos vossos 28 lugares.
+    </p>
+
+    <div id="tables-list" style="margin:1.5rem 0;"></div>
+
+    <form id="add-table-form" style="display:flex; gap:0.8rem; flex-wrap:wrap; align-items:end; border-top:1px solid var(--color-line); padding-top:1.5rem;">
+      <div class="field" style="margin:0;">
+        <label for="new-table-name">Nome da mesa</label>
+        <input type="text" id="new-table-name" placeholder="Ex: Mesa 8" required>
+      </div>
+      <div class="field" style="margin:0; max-width:140px;">
+        <label for="new-table-capacity">Lugares</label>
+        <input type="number" id="new-table-capacity" min="1" max="28" value="4" required>
+      </div>
+      <div class="field" style="margin:0;">
+        <label for="new-table-area">Zona</label>
+        <input type="text" id="new-table-area" placeholder="Ex: Sala, Esplanada" value="Sala">
+      </div>
+      <button type="submit" class="btn btn-olive">+ Adicionar mesa</button>
+    </form>
+  </section>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/emailjs-config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

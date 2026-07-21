@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acesso à equipa — Pizzaria Bella Domus</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <img src="img/logo-bella-domus.png" alt="Bella Domus Pizzaria" style="height:46px; width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+    </ul>
+    <div class="nav-cta"></div>
+  </nav>
+</header>
+
+<main>
+  <section class="section" style="max-width:420px; margin:0 auto;">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:2rem;">
+        <span class="eyebrow" style="justify-content:center;">Área reservada</span>
+        <h1 style="font-size:var(--step-h3);">Acesso à equipa</h1>
+        <p class="hint">Gestão de reservas e mesas do Bella Domus.</p>
+      </div>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" required autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="login-pass">Palavra-passe</label>
+          <input type="password" id="login-pass" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="login-submit">Entrar</button>
+        <div class="form-msg" id="login-msg"></div>
+      </form>
+
+      <p class="hint text-center" style="margin-top:1.5rem;">
+        As contas de acesso são criadas manualmente no Firebase Console — ver README.md.
+      </p>
+    </div>
+  </section>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script>
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('login-msg');
+  const btn = document.getElementById('login-submit');
+  msg.className = 'form-msg';
+
+  if (!FIREBASE_READY) {
+    msg.textContent = "O painel de administração ainda não está configurado. Ver README.md (secção Firebase).";
+    msg.classList.add('show', 'error');
+    return;
+  }
+
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+
+  btn.disabled = true;
+  btn.textContent = 'A entrar…';
+  try {
+    await auth.signInWithEmailAndPassword(email, pass);
+    window.location.href = 'admin.html';
+  } catch (err) {
+    console.error(err);
+    msg.textContent = 'Email ou palavra-passe incorretos.';
+    msg.classList.add('show', 'error');
+    btn.disabled = false;
+    btn.textContent = 'Entrar';
+  }
+});
+
+// se já tiver sessão iniciada, vai direto para o admin
+if (typeof auth !== 'undefined' && auth) {
+  auth.onAuthStateChanged(user => {
+    if (user) window.location.href = 'admin.html';
+  });
+}
+</script>
+</body>
+</html>
