@@ -21,12 +21,12 @@
  *    nesta pasta) para Firestore → separador "Rules", e publica.
  */
 const firebaseConfig = {
-  apiKey: "SUBSTITUIR_API_KEY",
-  authDomain: "SUBSTITUIR.firebaseapp.com",
-  projectId: "SUBSTITUIR_PROJECT_ID",
-  storageBucket: "SUBSTITUIR.appspot.com",
-  messagingSenderId: "SUBSTITUIR_SENDER_ID",
-  appId: "SUBSTITUIR_APP_ID"
+  apiKey:"AIzaSyC3ndWBenZFtvMSaVgoKRXbcummgF5gVN8",
+  authDomain: "bella-domus.firebaseapp.com",
+  projectId: "bella-domus",
+  storageBucket: "bella-domus.firebasestorage.app",
+  messagingSenderId: "949826636418",
+  appId: "1:949826636418:web:41c5d0e814037a861a029b"
 };
 
 const FIREBASE_READY = firebaseConfig.apiKey !== "SUBSTITUIR_API_KEY";
